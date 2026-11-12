@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang = "en">
+	<head>
+		<title> Wizard Advertising Agency </title>
+
+		<meta charset = "UTF-8" />
+		<meta name = "author" content = "Michael Chan" /> <!--date of creation; Mon, November 9, 2026-->
+		<meta name = "viewport" content = "width=device-width,initial-scale=1,shrink-to-fit=no" />
+
+		<!--browser icon-->
+		<link 	rel = "icon" 
+				href = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🧙</text></svg>' />
+
+		<!--custom css-->
+		<link rel = "stylesheet" href = "css/style.css" />
+
+		<!--font awesome link-->
+		<link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" />
+
+		<!--fonts: Lato for the body, Playfair Display for headings-->
+		<link rel = "preconnect" href = "https://fonts.googleapis.com" />
+		<link rel = "preconnect" href = "https://fonts.gstatic.com" crossorigin />
+		<link href = "https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel = "stylesheet" />
+	</head>
+
+	<body>
+		<!--header-->
+		<header class = "site-header">
+
+			<!--menu toggle (kept outside .header-inner so it can control the nav and the overlay)-->
+			<input type = "checkbox" id = "check" />
+
+			<div class = "container header-inner">
+
+				<!--logo-->
+				<a href = "index.html" class = "logo" aria-label = "Wizard Advertising Agency, home">
+					<span class = "logo-text"> Wizard Advertising Agency </span>
+				</a>
+				<!--logo end-->
+
+				<!--hamburger-->
+				<label for = "check" class = "checkbtn" aria-label = "Toggle menu">
+					<i class = "fas fa-bars checkbtn-icon" id = "checkbtn-icon"></i>
+				</label>
+				<!--hamburger end-->
+
+				<!--nav-->
+				<nav class = "main-nav" id = "main-nav">
+					<a href = "index.html" class = "nav-link active"> Home </a>
+
+					<div class = "nav-item has-dropdown">
+						<a href = "services.html" class = "nav-link"> Services <i class = "fas fa-chevron-down nav-caret"></i> </a>
+
+						<ul class = "dropdown">
+							<li> <a href = "marketing.html"> Marketing </a> </li>
+							<li> <a href = "advertising.html"> Advertising </a> </li>
+							<li> <a href = "branding-and-design.html"> Branding & Design </a> </li>
+							<li> <a href = "event-management.html"> Event Management </a> </li>
+							<li> <a href = "web-development.html"> Website Development </a> </li>
+							<li> <a href = "digital-marketing.html"> Digital Marketing </a> </li>
+							<li> <a href = "video-production.html"> Video Production </a> </li>
+						</ul>
+					</div>
+
+					<a href = "about.html" class = "nav-link"> About </a>
+
+					<!--contact (mobile menu copy, hidden on desktop)-->
+					<a href = "index.html#contact" class = "nav-cta nav-cta-mobile"> Contact Us </a>
+				</nav>
+				<!--nav end-->
+
+				<!--contact-->
+				<a href = "index.html#contact" class = "nav-cta nav-cta-desktop"> Contact Us </a>
+				<!--contact end-->
+
+			</div>
+
+			<!--overlay (tapping it closes the menu)-->
+			<label for = "check" class = "nav-overlay" aria-hidden = "true"></label>
+
+		</header>
+		<!--header end-->
+
+		<!--hero-->
+		<section class = "hero">
+			<div class = "hero-panel">
+
+				<!--video circle: change the path to your own file-->
+				<div class = "hero-circle">
+					<video class = "hero-video" autoplay muted loop playsinline>
+						<source src = "videos/messi.mp4" type = "video/mp4" />
+					</video>
+				</div>
+				<!--video circle end-->
+
+				<h1 class = "hero-title">
+					<span class = "hero-line hero-line-accent"> Wizard </span>
+					<span class = "hero-line"> Advertising </span>
+					<span class = "hero-line"> Agency </span>
+				</h1>
+
+			</div>
+		</section>
+		<!--hero end-->
+
+		<!--service overview-->
+		<section class = "service-overview">
+			<div class = "container">
+
+				<h2 class = "section-title"> Our Services </h2>
+
+				<div class = "service-grid">
+
+					<article class = "service-card">
+						<span class = "service-number"> 01 </span>
+						<h3 class = "service-name"> Marketing </h3>
+						<p> We focus on result-driven marketing strategies that connect businesses with their audiences. Our marketing solutions are backed by research, creativity, and innovation - helping brands to position themselves strongly in the competitive South Sudanese market. </p>
+						<a href = "marketing.html" class = "service-btn"> View Service <i class = "fas fa-arrow-right"></i> </a>
+					</article>
+
+					<article class = "service-card">
+						<span class = "service-number"> 02 </span>
+						<h3 class = "service-name"> Advertising </h3>
+						<p> We provide advertising solutions that make brands visible across platforms. Whether it's traditional media or digital advertising, our campaigns are designed to maximize reach and conversions. </p>
+						<a href = "advertising.html" class = "service-btn"> View Service <i class = "fas fa-arrow-right"></i> </a>
+					</article>
+
+					<article class = "service-card">
+						<span class = "service-number"> 03 </span>
+						<h3 class = "service-name"> Branding & Design </h3>
+						<p> We believe that branding is more than just a logo - it's about creating an identity that resonates. Our creative team crafts designs and brand strategies that make businesses stand out in South Sudan and beyond. </p>
+						<a href = "branding-and-design.html" class = "service-btn"> View Service <i class = "fas fa-arrow-right"></i> </a>
+					</article>
+
+					<article class = "service-card">
+						<span class = "service-number"> 04 </span>
+						<h3 class = "service-name"> Event Management </h3>
+						<p> We organize impactful events. From planning to execution, we manage every detail to ensure your brand is showcased in the best possible way. </p>
+						<a href = "event-management.html" class = "service-btn"> View Service <i class = "fas fa-arrow-right"></i> </a>
+					</article>
+
+					<article class = "service-card">
+						<span class = "service-number"> 05 </span>
+						<h3 class = "service-name"> Website Development </h3>
+						<p> As a full-service agency, we go beyond advertising and marketing. We also provide innovative web development services tailored to your business goals. Our websites are designed to be responsive, user-friendly, and conversion focused. </p>
+						<a href = "web-development.html" class = "service-btn"> View Service <i class = "fas fa-arrow-right"></i> </a>
+					</article>
+
+					<article class = "service-card">
+						<span class = "service-number"> 06 </span>
+						<h3 class = "service-name"> Digital Marketing </h3>
+						<p> In today's digital-first world, our expertise makes us the go-to partner for businesses aiming to grow online. From SEO to influencer marketing, we deliver strategies that ensure visibility, engagement, and measurable growth. </p>
+						<a href = "digital-marketing.html" class = "service-btn"> View Service <i class = "fas fa-arrow-right"></i> </a>
+					</article>
+
+					<article class = "service-card">
+						<span class = "service-number"> 07 </span>
+						<h3 class = "service-name"> Video Production </h3>
+						<p> We offer complete video production services to bring your brand story to life. From TV commercials to documentaries and creative shoots, we deliver high-quality content that connects with audiences. </p>
+						<a href = "video-production.html" class = "service-btn"> View Service <i class = "fas fa-arrow-right"></i> </a>
+					</article>
+
+				</div>
+			</div>
+		</section>
+		<!--service overview end-->
+
+		<!--who we are-->
+		<section class = "we-are-waa">
+			<div class = "container">
+
+				<p class = "we-are-label"> We are Wizard Advertising Agency </p>
+
+				<h2 class = "we-are-title">
+					The best advertising agency <span> Juba, South Sudan </span>
+				</h2>
+
+				<a href = "about.html" class = "we-are-btn"> Go To About Us <i class = "fas fa-arrow-right"></i> </a>
+
+			</div>
+		</section>
+		<!--who we are end-->
+
+		<!--who we serve-->
+		<section class = "who-we-serve">
+			<div class = "container">
+
+				<h2 class = "section-title"> Industries We Serve </h2>
+				<p class = "section-subtitle"> We serve across every frontier </p>
+
+				<div class = "industry-grid">
+
+					<article class = "industry-card">
+						<img src = "images/food.jpg" alt = "Food industry" />
+						<h3 class = "industry-name"> Food </h3>
+					</article>
+
+					<article class = "industry-card">
+						<img src = "images/ngo.jpg" alt = "NGO sector" />
+						<h3 class = "industry-name"> NGO </h3>
+					</article>
+
+					<article class = "industry-card">
+						<img src = "images/telecom.jpg" alt = "Telecommunication industry" />
+						<h3 class = "industry-name"> Telecommunication </h3>
+					</article>
+
+					<article class = "industry-card">
+						<img src = "images/transportation.jpg" alt = "Transportation industry" />
+						<h3 class = "industry-name"> Transportation </h3>
+					</article>
+
+					<article class = "industry-card">
+						<img src = "images/finance.jpg" alt = "Finance industry" />
+						<h3 class = "industry-name"> Finance </h3>
+					</article>
+
+				</div>
+			</div>
+		</section>
+		<!--who we serve end-->
+
+		<!--contact-->
+		<footer id = "contact" class = "site-footer">
+			<div class = "container">
+
+				<h2 class = "footer-title"> Let's <span> Connect </span> </h2>
+
+				<div class = "footer-grid">
+
+					<!--contact details and social links-->
+					<div class = "footer-info">
+
+						<ul class = "footer-contact">
+							<li>
+								<span class = "footer-label"> Email </span>
+								<a href = "mailto:info@wizardaa.com"> info@wizardaa.com </a>
+							</li>
+
+							<li>
+								<span class = "footer-label"> Phone </span>
+								<a href = "tel:+211920000000"> +211 920 000 000 </a>
+							</li>
+
+							<li>
+								<span class = "footer-label"> Location </span>
+								<span class = "footer-value"> Lukak building, Juba, South Sudan </span>
+							</li>
+						</ul>
+
+						<div class = "footer-social">
+							<a href = "#" aria-label = "Facebook"> <i class = "fa-brands fa-facebook-f"></i> </a>
+							<a href = "#" aria-label = "Instagram"> <i class = "fa-brands fa-instagram"></i> </a>
+							<a href = "#" aria-label = "X (Twitter)"> <i class = "fa-brands fa-x-twitter"></i> </a>
+							<a href = "#" aria-label = "TikTok"> <i class = "fa-brands fa-tiktok"></i> </a>
+						</div>
+
+					</div>
+					<!--contact details end-->
+
+					<!--contact form (change the action to your own script)-->
+					<form class = "footer-form" action = "send-message.php" method = "post">
+						<div class = "form-row">
+							<input type = "text" name = "name" placeholder = "Your name" aria-label = "Your name" autocomplete = "name" required />
+							<input type = "email" name = "email" placeholder = "Your email" aria-label = "Your email" autocomplete = "email" required />
+						</div>
+
+						<input type = "tel" name = "phone" placeholder = "Your phone number" aria-label = "Your phone number" autocomplete = "tel" />
+
+						<textarea name = "message" placeholder = "Your message" aria-label = "Your message" required></textarea>
+
+						<button type = "submit" class = "form-btn"> Send Message <i class = "fas fa-paper-plane"></i> </button>
+					</form>
+					<!--contact form end-->
+
+				</div>
+
+				<!--bottom bar-->
+				<div class = "footer-bottom">
+					<div class = "footer-credits">
+						<p class = "footer-copy"> © Wizard Advertising Agency LTD 2026 </p>
+						<p class = "footer-copy"> Designed by <a href = "https://diingmike.github.io/mchan/"> m.chan </a> </p>
+					</div>
+				</div>
+				<!--bottom bar end-->
+
+			</div>
+		</footer>
+		<!--contact end-->
+
+		<!--go up button-->
+		<a href = "#" class = "go-up" id = "go-up" aria-label = "Go to top"> <i class = "fas fa-arrow-up"></i> </a>
+		<!--go up button end-->
+
+		<!--js link-->
+		<script src = "js/script.js"></script>
+		<!--js link end-->
+	</body>
+</html>
