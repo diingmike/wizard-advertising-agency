@@ -83,3 +83,64 @@ goUp.addEventListener("click", function (e)
 });
 
 /* go up button end */
+
+/* scroll reveal */
+
+/* the elements that fade in as they enter the screen */
+const revealSelectors = [
+	".section-title",
+	".section-subtitle",
+	".service-card",
+	".we-are-waa .container",
+	".industry-card",
+	".footer-title",
+	".footer-grid",
+	".footer-bottom",
+	".about-title",
+	".about-image",
+	".mission-item",
+	".team-group-title",
+	".team-card",
+	".service-title",
+	".definition-left",
+	".definition-right",
+	".why-title",
+	".why-box"
+];
+
+const revealItems = document.querySelectorAll(revealSelectors.join(","));
+
+/* cards in the same row appear one after another: [grid, cards per row] */
+[[".service-grid", 4], [".industry-grid", 3], [".why-grid", 2]].forEach(function (group)
+{
+	const grid = document.querySelector(group[0]);
+
+	if (!grid) return;
+
+	Array.from(grid.children).forEach(function (card, i)
+	{
+		card.style.setProperty("--delay", ((i % group[1]) * 0.12) + "s");
+	});
+});
+
+const revealObserver = new IntersectionObserver(function (entries)
+{
+	entries.forEach(function (entry)
+	{
+		/* add the class when the element enters, remove it when it leaves,
+		   so the effect repeats when scrolling in either direction */
+		entry.target.classList.toggle("in-view", entry.isIntersecting);
+	});
+},
+{
+	threshold: 0.15,
+	rootMargin: "0px 0px -6% 0px"
+});
+
+revealItems.forEach(function (item)
+{
+	item.classList.add("reveal");
+	revealObserver.observe(item);
+});
+
+/* scroll reveal end */
