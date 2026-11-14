@@ -165,6 +165,13 @@ html.nav-open
 	background: var(--yellow);
 }
 
+/* Services only opens the dropdown, so it's a button that looks like the other links */
+button.nav-link
+{
+	font-family: inherit;
+	cursor: default;
+}
+
 .nav-caret
 {
 	font-size: 0.65rem;
@@ -426,6 +433,12 @@ html.nav-open
 		display: flex;
 	}
 
+	button.nav-link
+	{
+		width: 100%;
+		justify-content: flex-start;
+	}
+
 	/* dropdown becomes an always-open, compact indented list */
 	.dropdown
 	{
@@ -639,7 +652,7 @@ html.nav-open
 {
 	position: relative;
 	width: fit-content;
-	margin-bottom: 56px;
+	margin-bottom: 36px;
 	padding-bottom: 18px;
 	font-family: var(--body);
 	font-size: clamp(2rem, 5vw, 3.4rem);
@@ -647,18 +660,6 @@ html.nav-open
 	letter-spacing: -0.01em;
 	text-transform: uppercase;
 	color: var(--black);
-}
-
-/* yellow line under the title, as long as the text */
-.section-title::after
-{
-	content: "";
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	height: 1px;
-	background: var(--yellow);
 }
 
 /* four cards per row */
@@ -1499,3 +1500,746 @@ html.nav-open
 }
 
 /* footer responsive end */
+
+/* scroll reveal */
+
+.reveal
+{
+	opacity: 0;
+	translate: 0 50px;
+	transition: opacity 0.9s ease var(--delay, 0s), translate 0.9s ease var(--delay, 0s);
+}
+
+.reveal.in-view
+{
+	opacity: 1;
+	translate: 0 0;
+}
+
+/* the service cards already have hover transitions, so keep them alongside the reveal */
+.service-card.reveal
+{
+	transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.9s ease var(--delay, 0s), translate 0.9s ease var(--delay, 0s);
+}
+
+.why-box.reveal
+{
+	transition: background 0.3s ease, transform 0.3s ease, opacity 0.9s ease var(--delay, 0s), translate 0.9s ease var(--delay, 0s);
+}
+
+/* people who prefer less motion see everything straight away */
+@media (prefers-reduced-motion: reduce)
+{
+	.reveal
+	{
+		opacity: 1;
+		translate: none;
+		transition: none;
+	}
+}
+
+/* scroll reveal end */
+
+/* about intro */
+
+.about-intro
+{
+	--about-title-size: clamp(3rem, 13vw, 11rem);
+
+	padding-top: 80px;
+	background: var(--yellow);
+	overflow: hidden;
+}
+
+/* the title sits at the back, centred */
+.about-title
+{
+	position: relative;
+	z-index: 1;
+	font-family: var(--body);
+	font-size: var(--about-title-size);
+	font-weight: 800;
+	line-height: 0.95;
+	letter-spacing: -0.03em;
+	text-align: center;
+	text-transform: uppercase;
+	color: var(--white);
+	text-shadow: 0 2px 14px rgba(30, 39, 46, 0.25);
+}
+
+/* the cutout image sits in front and overlaps the lower half of the title */
+.about-image
+{
+	position: relative;
+	z-index: 2;
+	display: block;
+	width: auto;
+	max-width: 100%;
+	height: clamp(380px, 75vh, 760px);
+	margin: calc(var(--about-title-size) * -0.5) auto 0;
+	object-fit: contain;
+	object-position: center bottom;
+}
+
+/* about intro end */
+
+/* about intro responsive */
+
+@media (max-width: 992px)
+{
+	.about-intro
+	{
+		padding-top: 56px;
+	}
+
+	.about-image
+	{
+		height: clamp(340px, 60vh, 620px);
+	}
+}
+
+@media (max-width: 480px)
+{
+	.about-intro
+	{
+		--about-title-size: clamp(2.6rem, 15vw, 4rem);
+
+		padding-top: 40px;
+	}
+
+	.about-image
+	{
+		height: 360px;
+	}
+}
+
+/* about intro responsive end */
+
+/* mission */
+
+.mission
+{
+	padding: 120px 0;
+}
+
+/* each row: title on the left, description on the right */
+.mission-item
+{
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	gap: 48px;
+	align-items: center;
+	padding: 56px 0;
+}
+
+/* a line only between the rows: none above Mission, none below Our Value */
+.mission-item + .mission-item
+{
+	border-top: 1px solid darkgray;
+}
+
+.mission-item:first-child
+{
+	padding-top: 0;
+}
+
+.mission-item:last-child
+{
+	padding-bottom: 0;
+}
+
+/* title in the display font, with an icon before it */
+.mission-label
+{
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	font-family: var(--body);
+	font-size: clamp(1.5rem, 3.5vw, 2.7rem);
+	font-weight: 800;
+	line-height: 1.1;
+	letter-spacing: -0.01em;
+}
+
+/* icon in a yellow circle */
+.mission-icon
+{
+	display: grid;
+	place-items: center;
+	flex-shrink: 0;
+	width: 60px;
+	height: 60px;
+	background: var(--yellow);
+	color: var(--black);
+	font-size: 1.5rem;
+	border-radius: 50%;
+	transition: transform 0.3s ease;
+}
+
+.mission-item:hover .mission-icon
+{
+	transform: scale(1.1) rotate(-8deg);
+}
+
+/* description in the plain body font (overrides the global p rule so it fills the column) */
+.mission-text
+{
+	max-width: none;
+	margin: 0;
+	font-family: var(--body);
+	font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+	font-weight: 400;
+	line-height: 1.7;
+}
+
+/* mission end */
+
+/* mission responsive */
+
+@media (max-width: 992px)
+{
+	.mission
+	{
+		padding: 88px 0;
+	}
+
+	.mission-item
+	{
+		grid-template-columns: 1fr;
+		gap: 20px;
+		padding: 44px 0;
+	}
+
+	.mission-item:first-child
+	{
+		padding-top: 0;
+	}
+
+	.mission-item:last-child
+	{
+		padding-bottom: 0;
+	}
+}
+
+@media (max-width: 480px)
+{
+	.mission
+	{
+		padding: 64px 0;
+	}
+
+	.mission-item
+	{
+		gap: 16px;
+		padding: 32px 0;
+	}
+
+	.mission-item:first-child
+	{
+		padding-top: 0;
+	}
+
+	.mission-item:last-child
+	{
+		padding-bottom: 0;
+	}
+
+	.mission-label
+	{
+		gap: 14px;
+		font-size: 1.8rem;
+	}
+
+	.mission-icon
+	{
+		width: 48px;
+		height: 48px;
+		font-size: 1.2rem;
+	}
+
+	.mission-text
+	{
+		font-size: 1.05rem;
+	}
+}
+
+/* mission responsive end */
+
+/* team */
+
+.team
+{
+	padding: 120px 0;
+	background: #dfe6e9;
+	color: var(--black);
+}
+
+/* group headings: Leadership, Hands-On Team */
+.team-group-title
+{
+	margin-bottom: 48px;
+	font-family: var(--body);
+	font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+	font-weight: 800;
+	line-height: 1.1;
+	color: var(--black);
+}
+
+/* all cards are the same size, lined up from the left like the poster */
+.team-grid
+{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	gap: 48px 24px;
+}
+
+.team-grid + .team-group-title
+{
+	margin-top: 96px;
+}
+
+/* five cards per row: (100% minus 4 gaps) divided by 5 */
+.team-card
+{
+	flex: 0 0 calc((100% - 96px) / 5);
+	text-align: left;
+}
+
+/* tall rounded yellow card; a transparent PNG shows the yellow, a JPG fills it */
+.team-photo
+{
+	aspect-ratio: 3 / 4;
+	margin-bottom: 18px;
+	background: var(--yellow);
+	border-radius: 30px;
+	overflow: hidden;
+}
+
+.team-photo img
+{
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center top;
+}
+
+/* on hover the photo zooms in slightly and shows its colour */
+.team-card:hover .team-photo img
+{
+	transform: scale(1.06);
+	filter: grayscale(0);
+}
+
+.team-name
+{
+	font-family: var(--body);
+	font-size: 1.2rem;
+	font-weight: 800;
+	line-height: 1.25;
+	color: var(--black);
+}
+
+/* overrides the global p rule */
+.team-title
+{
+	max-width: none;
+	margin: 6px 0 0;
+	font-size: 0.95rem;
+	font-weight: 400;
+	line-height: 1.4;
+	color: rgba(30, 39, 46, 0.7);
+}
+
+/* team end */
+
+/* team responsive */
+
+@media (max-width: 992px)
+{
+	.team
+	{
+		padding: 88px 0;
+	}
+
+	.team-grid
+	{
+		gap: 40px 24px;
+	}
+
+	/* three cards per row: (100% minus 2 gaps) divided by 3 */
+	.team-card
+	{
+		flex: 0 0 calc((100% - 48px) / 3);
+	}
+
+	.team-grid + .team-group-title
+	{
+		margin-top: 72px;
+	}
+}
+
+@media (max-width: 480px)
+{
+	.team
+	{
+		padding: 64px 0;
+	}
+
+	.team-group-title
+	{
+		margin-bottom: 32px;
+	}
+
+	.team-grid
+	{
+		gap: 32px 16px;
+	}
+
+	/* two cards per row: (100% minus 1 gap) divided by 2 */
+	.team-card
+	{
+		flex: 0 0 calc((100% - 16px) / 2);
+	}
+
+	.team-photo
+	{
+		margin-bottom: 14px;
+		border-radius: 22px;
+	}
+
+	.team-name
+	{
+		font-size: 1rem;
+	}
+
+	.team-title
+	{
+		font-size: 0.82rem;
+	}
+
+	.team-grid + .team-group-title
+	{
+		margin-top: 56px;
+	}
+}
+
+/* team responsive end */
+
+/* service intro */
+
+.service-intro
+{
+	padding: 140px 0 110px;
+	background: var(--yellow);
+	color: var(--white);
+}
+
+.service-title
+{
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+	font-family: var(--body);
+	font-weight: 800;
+	text-transform: uppercase;
+	text-shadow: 0 2px 14px rgba(30, 39, 46, 0.25);
+}
+
+/* small "Service >" label above the main title */
+.service-parent
+{
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	font-size: clamp(1rem, 2vw, 1.5rem);
+	font-weight: 900;
+	letter-spacing: 4px;
+}
+
+.service-parent i
+{
+	font-size: 0.75em;
+}
+
+/* the service name, very large */
+.service-current
+{
+	font-size: clamp(3rem, 11vw, 9rem);
+	line-height: 0.95;
+	letter-spacing: -0.03em;
+	overflow-wrap: anywhere;
+}
+
+/* service intro end */
+
+/* service intro responsive */
+
+@media (max-width: 992px)
+{
+	.service-intro
+	{
+		padding: 100px 0 80px;
+	}
+}
+
+@media (max-width: 480px)
+{
+	.service-intro
+	{
+		padding: 64px 0 52px;
+	}
+
+	.service-title
+	{
+		gap: 12px;
+	}
+
+	.service-parent
+	{
+		gap: 10px;
+		letter-spacing: 3px;
+	}
+
+	.service-current
+	{
+		font-size: clamp(2.2rem, 11vw, 3.6rem);
+	}
+}
+
+/* service intro responsive end */
+
+/* service definition */
+
+.service-definition
+{
+	padding: 120px 0;
+}
+
+/* headline on the left, paragraph on the right */
+.definition-grid
+{
+	display: grid;
+	grid-template-columns: 1fr 1.1fr;
+	gap: 80px;
+	align-items: start;
+}
+
+/* small label with a yellow line before it */
+.definition-label
+{
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	max-width: none;
+	margin: 0 0 24px;
+	font-size: 0.95rem;
+	font-weight: 900;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+}
+
+.definition-title
+{
+	font-family: var(--body);
+	font-size: clamp(1.5rem, 3.7vw, 3.1rem);
+	font-weight: 800;
+	line-height: 1.12;
+	letter-spacing: -0.01em;
+}
+
+/* overrides the global p rule so the text fills the column */
+.definition-text
+{
+	max-width: none;
+	margin: 0;
+	font-size: clamp(1.05rem, 1.3vw, 1.1rem);
+	line-height: 1.85;
+}
+
+/* service definition end */
+
+/* service definition responsive */
+
+@media (max-width: 992px)
+{
+	.service-definition
+	{
+		padding: 88px 0;
+	}
+
+	.definition-grid
+	{
+		grid-template-columns: 1fr;
+		gap: 32px;
+	}
+}
+
+@media (max-width: 480px)
+{
+	.service-definition
+	{
+		padding: 64px 0;
+	}
+
+	.definition-grid
+	{
+		gap: 24px;
+	}
+
+	.definition-label
+	{
+		gap: 12px;
+		margin-bottom: 18px;
+		font-size: 0.8rem;
+		letter-spacing: 2px;
+	}
+
+	.definition-label::before
+	{
+		width: 32px;
+	}
+
+	.definition-text
+	{
+		font-size: 1rem;
+	}
+}
+
+/* service definition responsive end */
+
+/* why choose waa */
+
+.why-choose-waa
+{
+	padding: 120px 0;
+	background: #fff;
+}
+
+.why-title
+{
+	max-width: 900px;
+	margin-bottom: 64px;
+	font-family: var(--body);
+	font-size: clamp(2rem, 4.2vw, 3.6rem);
+	font-weight: 800;
+	line-height: 1.12;
+	letter-spacing: -0.01em;
+}
+
+/* two boxes per row */
+.why-grid
+{
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 20px;
+}
+
+/* light grey boxes that lift on hover */
+.why-box
+{
+	padding: 36px 28px;
+	background: var(--white);
+	border-radius: 20px;
+	transition: transform 0.3s ease;
+}
+
+.why-box:hover
+{
+	transform: translateY(-8px);
+}
+
+/* the title shrinks to its text so the line matches its length */
+.why-name
+{
+	position: relative;
+	width: fit-content;
+	margin-bottom: 16px;
+	padding-bottom: 12px;
+	font-family: var(--body);
+	font-size: 1.4rem;
+	font-weight: 800;
+	line-height: 1.2;
+}
+
+/* yellow line under the title: collapsed by default, runs left to right on hover */
+.why-name::after
+{
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 1px;
+	background: var(--black);
+	transform: scaleX(0);
+	transform-origin: left;
+	transition: transform 0.4s ease;
+}
+
+.why-box:hover .why-name::after
+{
+	transform: scaleX(1);
+}
+
+/* overrides the global p rule so the text fills the box */
+.why-box p
+{
+	max-width: none;
+	margin: 0;
+	font-size: 1rem;
+	line-height: 1.7;
+}
+
+/* why choose waa end */
+
+/* why choose waa responsive */
+
+@media (max-width: 992px)
+{
+	.why-choose-waa
+	{
+		padding: 88px 0;
+	}
+
+	.why-title
+	{
+		margin-bottom: 48px;
+	}
+
+	.why-grid
+	{
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 480px)
+{
+	.why-choose-waa
+	{
+		padding: 64px 0;
+	}
+
+	.why-title
+	{
+		margin-bottom: 36px;
+	}
+
+	.why-grid
+	{
+		gap: 16px;
+	}
+
+	.why-box
+	{
+		padding: 28px 24px;
+	}
+
+	.why-name
+	{
+		font-size: 1.25rem;
+	}
+}
+
+/* why choose waa responsive end */
